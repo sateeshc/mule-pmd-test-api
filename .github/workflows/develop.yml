@@ -26,18 +26,17 @@ jobs:
       - uses: actions/checkout@v3
 
       - uses: actions/setup-java@v3
-        id: pmd
         with:
           distribution: 'temurin'
           java-version: '11'
       - uses: pmd/pmd-github-action@v1
+        id: pmd
         with:
           rulesets: 'ruleset.xml'
-      - name: Fail build if there are violations
-    	if: steps.pmd.outputs.violations != 0
-    	run: exit 1
+      - name: Fail Build if there are violations
+        if: steps.pmd.outputs.violations != 0
+        run: exit 1
 
-    
   
       
       
